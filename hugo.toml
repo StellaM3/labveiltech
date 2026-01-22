@@ -1,11 +1,11 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://stellam3.github.io/labveiltech/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'neso'
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.150.0"
+    min = "0.154.0"
 
 [params]
   [params.neso]
