@@ -2,12 +2,10 @@
 date = '2026-01-22T10:53:46+01:00'
 draft = false
 title = 'Apprendre avec les LLM dans mon domaine : bénéfices, limites et méthode'
-tags: ["IA", "LLM", "ChatGPT", "apprentissage", "veille", "marketing", "communication"]
-categories: ["IA", "Veille"]
-summary: "Comment j’utilise les LLM (ChatGPT, Claude, Grok, Perplexity) pour apprendre dans la communication/marketing : bénéfices concrets, limites réelles et techniques pour progresser par la pratique."
-
+tags = ["IA", "LLM", "ChatGPT", "apprentissage", "veille", "marketing", "communication"]
+categories = ["IA", "Veille"]
+summary = "Comment j'utilise les LLM (ChatGPT, Claude, Grok, Perplexity) pour apprendre dans la communication/marketing : bénéfices concrets, limites réelles et techniques pour progresser par la pratique."
 +++
----
 
 # Apprendre avec les LLM dans mon domaine : bénéfices, limites et méthode
 
