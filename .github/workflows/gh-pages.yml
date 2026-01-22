@@ -19,21 +19,34 @@ jobs:
 
       - name: Setup Hugo Extended
         run: |
-          # Supprimer toute version existante de Hugo
-          sudo rm -f /usr/local/bin/hugo /usr/bin/hugo
+          # Supprimer toute version existante de Hugo de tous les emplacements possibles
+          sudo rm -f /usr/local/bin/hugo /usr/bin/hugo ~/.local/bin/hugo
           # Télécharger Hugo Extended 0.154.5 (version que j'ai)
-          HUGO_VERSION="0.131.0"
+          HUGO_VERSION="0.154.5"
           echo "Installing Hugo Extended version: $HUGO_VERSION"
           wget -q -O /tmp/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+          if [ ! -f /tmp/hugo.tar.gz ] || [ ! -s /tmp/hugo.tar.gz ]; then
+            echo "Error: Failed to download Hugo"
+            exit 1
+          fi
           tar -xzf /tmp/hugo.tar.gz -C /tmp
+          if [ ! -f /tmp/hugo ]; then
+            echo "Error: Hugo binary not found after extraction"
+            exit 1
+          fi
           sudo mv /tmp/hugo /usr/local/bin/hugo
           sudo chmod +x /usr/local/bin/hugo
           # Vérifier que la bonne version est utilisée
           echo "Hugo location: $(which hugo)"
+          /usr/local/bin/hugo version
+          # S'assurer que c'est bien cette version qui est utilisée
+          export PATH="/usr/local/bin:$PATH"
           hugo version
 
       - name: Build
-        run: hugo --minify
+        run: |
+          export PATH="/usr/local/bin:$PATH"
+          hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
