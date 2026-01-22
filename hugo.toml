@@ -119,3 +119,7 @@ theme = 'neso'
     [params.neso.assets]
       output_dir                       = ""
       disable_fingerprinting           = false
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
