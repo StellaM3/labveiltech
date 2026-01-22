@@ -19,12 +19,17 @@ jobs:
 
       - name: Setup Hugo Extended
         run: |
-          # Télécharger la dernière version de Hugo Extended
-          HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+          # Supprimer toute version existante de Hugo
+          sudo rm -f /usr/local/bin/hugo /usr/bin/hugo
+          # Télécharger Hugo Extended 0.154.5 (version que j'ai)
+          HUGO_VERSION="0.131.0"
           echo "Installing Hugo Extended version: $HUGO_VERSION"
-          wget -O /tmp/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+          wget -q -O /tmp/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
           tar -xzf /tmp/hugo.tar.gz -C /tmp
           sudo mv /tmp/hugo /usr/local/bin/hugo
+          sudo chmod +x /usr/local/bin/hugo
+          # Vérifier que la bonne version est utilisée
+          echo "Hugo location: $(which hugo)"
           hugo version
 
       - name: Build
