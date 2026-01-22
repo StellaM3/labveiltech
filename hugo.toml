@@ -48,7 +48,7 @@ theme = 'neso'
         #name                           = "Github"
         #url                            = "https://github.com/"
     [params.neso.home]
-      display_mode                     = "list"
+      display_mode                     = "intro"
       [params.neso.home.list]
         featured_entries_limit         = 10
         hide_view_archives_cta         = false
