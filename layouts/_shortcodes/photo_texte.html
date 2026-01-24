@@ -1,0 +1,15 @@
+{{- $img := resources.Get (.Get 0) -}}
+{{- $size := .Get 2 | default "200px" -}}
+{{- if $img -}}
+<div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem;">
+  <div style="flex-shrink: 0;">
+    <img src="{{ $img.RelPermalink }}" alt="{{ .Get 1 | default "Image" }}" style="max-width: {{ $size }}; width: {{ $size }}; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+  </div>
+  <div style="flex: 1; min-width: 0;">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
+{{- else -}}
+<p>Image not found: {{ .Get 0 }}</p>
+{{ .Inner | markdownify }}
+{{- end -}}

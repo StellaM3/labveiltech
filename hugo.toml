@@ -1,6 +1,6 @@
 baseURL = 'https://stellam3.github.io/labveiltech/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+languageCode = 'fr'
+title = 'Veille Estelle Rossier'
 theme = 'neso'
 [module]
   [module.hugoVersion]

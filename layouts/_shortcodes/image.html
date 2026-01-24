@@ -1,8 +1,7 @@
 {{- $img := resources.Get (.Get 0) -}}
+{{- $size := .Get 2 | default "100%" -}}
 {{- if $img -}}
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="{{ $img.RelPermalink }}" alt="{{ .Get 1 | default "Image" }}" style="max-width: 100%; height: auto;" />
-  </div>
+  <img src="{{ $img.RelPermalink }}" alt="{{ .Get 1 | default "Image" }}" style="max-width: {{ $size }}; width: {{ $size }}; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
 {{- else -}}
   <p>Image not found: {{ .Get 0 }}</p>
 {{- end -}}
